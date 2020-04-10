@@ -1,4 +1,5 @@
-FROM node
+FROM node:8
+MAINTAINER Nitin Goyal <nitingoyal.dev@gmail.com>
 
 ENV NGINX_CODENAME stretch
 ENV STORE_PORT 3000
@@ -6,18 +7,21 @@ ENV STORE_PORT 3000
 # install requirements and NGINX
 RUN echo "deb http://nginx.org/packages/debian/ ${NGINX_CODENAME} nginx" >> /etc/apt/sources.list \
 	&& apt-get update && apt-get install --no-install-recommends --no-install-suggests -y --force-yes \
-	gettext-base\
-	bash \
-	zip \
-	unzip \
-	wget \
-	curl \
-	nano \
-	ca-certificates \
-	nginx
+		gettext-base\
+		bash \
+		zip \
+		unzip \
+		wget \
+		curl \
+		nano \
+		ca-certificates \
+		nginx
 
 # install PM2
-RUN npm i -g pm2
+RUN npm install pm2 -g
+
+
+RUN mkdir -p /var/www/cezerin2-store 
 
 WORKDIR /var/www/cezerin2-store 
 
@@ -33,7 +37,7 @@ RUN chmod +x "/usr/local/bin/docker-entrypoint.sh"
 
 # build project
 RUN cd /var/www/cezerin2-store \
-	&& npm i \
+	&& npm install \
 	&& npm run build
 
 

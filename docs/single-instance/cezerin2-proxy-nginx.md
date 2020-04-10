@@ -1,10 +1,9 @@
 # Single Instance cezerin2-proxy nginx config
 
--   [nginx.conf](#nginx.conf)
--   [default.conf.template](#default.conf.template)
+* [nginx.conf](#nginx.conf)
+* [default.conf.template](#default.conf.template)
 
 ## nginx.conf
-
 ```nginx
 user  nginx;
 worker_processes  1;
@@ -38,7 +37,6 @@ http {
 ```
 
 ## default.conf.template
-
 ```nginx
 server {
         # Dynamic image resizing server
