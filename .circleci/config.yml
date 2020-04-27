@@ -21,5 +21,9 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
 
       - run:
+          name: Lint
+          command: prettier --write .
+
+      - run:
           name: Build
           command: npm run build
