@@ -15,10 +15,6 @@ jobs:
           name: Install Dependencies
           command: npm i
 
-      - run:
-          name: Install Prettier
-          command: npm i -g prettier
-
       - save_cache:
           paths:
             - node_modules
@@ -26,7 +22,7 @@ jobs:
 
       - run:
           name: Lint
-          command: prettier --write .
+          command: npx prettier --write .
 
       - run:
           name: Build
