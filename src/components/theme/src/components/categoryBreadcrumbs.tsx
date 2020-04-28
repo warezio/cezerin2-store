@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { NavLink } from "react-router-dom"
+import { Link } from "gatsby"
 import { text } from "../lib/settings"
 import * as helper from "../lib/helper"
 
@@ -10,7 +10,7 @@ const CategoryBreadcrumbs = ({ currentCategory, categories }) => {
     <nav className="breadcrumb is-small" aria-label="breadcrumbs">
       <ul>
         <li>
-          <NavLink to="/">{text.home}</NavLink>
+          <Link to="/">{text.home}</Link>
         </li>
         {items}
         <li className="is-active">

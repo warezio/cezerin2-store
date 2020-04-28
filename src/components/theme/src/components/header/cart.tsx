@@ -1,5 +1,5 @@
 import React from "react"
-import { NavLink, Redirect } from "react-router-dom"
+import { Link, Redirect } from "gatsby"
 import Lscache from "lscache"
 import { themeSettings, text } from "../../lib/settings"
 import * as helper from "../../lib/helper"
@@ -14,13 +14,13 @@ const CartItem = ({ item, deleteCartItem, settings }) => {
     <div className="columns is-mobile">
       <div className="column is-2">
         <div className="image">
-          <NavLink to={item.path}>
+          <Link to={item.path}>
             <img src={thumbnail} />
-          </NavLink>
+          </Link>
         </div>
       </div>
       <div className="column">
-        <NavLink to={item.path}>{item.name}</NavLink>
+        <Link to={item.path}>{item.name}</Link>
         {item.variant_name.length > 0 && (
           <div className="cart-option-name">{item.variant_name}</div>
         )}
@@ -68,7 +68,7 @@ const Cart = () => {
             <b>{helper.formatCurrency(cart.subtotal, settings)}</b>
           </div>
         </div>
-        <NavLink
+        <Link
           className="button is-primary is-fullwidth has-text-centered"
           style={{ textTransform: "uppercase" }}
           to={{
@@ -79,7 +79,7 @@ const Cart = () => {
           onClick={cartToggle}
         >
           {text.proceedToCheckout}
-        </NavLink>
+        </Link>
       </div>
     )
   }

@@ -20,33 +20,33 @@ const CheckoutForm = props => {
     })
   }, [])
 
-  changeStep = step => {
-    this.setState({ step })
+  const changeStep = step => {
+    setStep(step)
   }
 
-  handleContactsSave = () => {
-    this.changeStep(2)
+  const handleContactsSave = () => {
+    changeStep(2)
   }
 
-  handleContactsEdit = () => {
-    this.changeStep(1)
+  const handleContactsEdit = () => {
+    changeStep(1)
   }
 
-  handleShippingSave = () => {
-    this.changeStep(3)
+  const handleShippingSave = () => {
+    changeStep(3)
   }
 
-  handleShippingEdit = () => {
-    this.changeStep(2)
+  const handleShippingEdit = () => {
+    changeStep(2)
   }
 
-  handleContactsSubmit = values => {
+  const handleContactsSubmit = values => {
     let { shipping_address, billing_address } = values
     shipping_address = Object.assign(
       { full_name: `${values.first_name} ${values.last_name}` },
       shipping_address
     )
-    this.props.updateCart({
+    props.updateCart({
       email: values.email,
       mobile: values.mobile,
       first_name: values.first_name,
@@ -56,11 +56,11 @@ const CheckoutForm = props => {
       billing_address,
     })
 
-    this.handleContactsSave()
+    handleContactsSave()
   }
 
-  handleLocationSave = shippingLocation => {
-    this.props.updateCart(
+  const handleLocationSave = shippingLocation => {
+    props.updateCart(
       {
         shipping_address: shippingLocation,
         billing_address: shippingLocation,
@@ -68,81 +68,79 @@ const CheckoutForm = props => {
         shipping_method_id: null,
       },
       cart => {
-        this.props.loadShippingMethods()
-        this.props.loadPaymentMethods()
+        props.loadShippingMethods()
+        props.loadPaymentMethods()
       }
     )
   }
 
-  handleShippingMethodSave = shippingMethodId => {
-    this.props.updateCart(
+  const handleShippingMethodSave = shippingMethodId => {
+    props.updateCart(
       {
         payment_method_id: null,
         shipping_method_id: shippingMethodId,
       },
       cart => {
-        this.props.loadPaymentMethods()
+        props.loadPaymentMethods()
       }
     )
   }
 
-  handlePaymentMethodSave = paymentMethodId => {
-    this.props.updateCart({
+  const handlePaymentMethodSave = paymentMethodId => {
+    props.updateCart({
       payment_method_id: paymentMethodId,
     })
   }
 
-  isShowPaymentForm = () => {
-    const { payment_method_gateway } = this.props.state.cart
+  const isShowPaymentForm = () => {
+    const { payment_method_gateway } = props.state.cart
     const paymentGatewayExists =
       payment_method_gateway && payment_method_gateway !== ""
     return paymentGatewayExists
   }
 
-  handleShippingSubmit = values => {
-    if (this.isShowPaymentForm()) {
+  const handleShippingSubmit = values => {
+    if (isShowPaymentForm()) {
       const { shipping_address, billing_address, comments } = values
 
-      this.props.updateCart({
+      props.updateCart({
         shipping_address,
         billing_address,
         comments,
       })
-      this.handleShippingSave()
+      handleShippingSave()
     } else {
-      this.props.checkout(values)
+      props.checkout(values)
     }
   }
 
-  handleSuccessPayment = () => {
-    this.props.checkout(null)
+  const handleSuccessPayment = () => {
+    props.checkout(null)
   }
 
-  handleCheckoutWithToken = tokenId => {
-    this.props.updateCart(
+  const handleCheckoutWithToken = tokenId => {
+    props.updateCart(
       {
         payment_token: tokenId,
       },
       cart => {
-        this.props.checkout(null)
+        props.checkout(null)
       }
     )
   }
 
-  const { step } = this.state
   const {
     settings,
     cart,
     customerProperties,
     paymentMethods,
     shippingMethods,
-    shippingMethod,
     loadingShippingMethods,
     loadingPaymentMethods,
     checkoutFields,
     processingCheckout,
     cartlayerBtnInitialized,
-  } = this.props.state
+  } = props.state
 
   const {
     checkoutInputClass = "checkout-field",
@@ -151,7 +149,7 @@ const CheckoutForm = props => {
   } = themeSettings
 
   if (cart && cart.items.length > 0) {
-    const showPaymentForm = this.isShowPaymentForm()
+    const showPaymentForm = isShowPaymentForm()
 
     let shippingMethod = null
     let paymentMethod = null
@@ -184,11 +182,11 @@ const CheckoutForm = props => {
           loadingShippingMethods={loadingShippingMethods}
           loadingPaymentMethods={loadingPaymentMethods}
           checkoutFields={checkoutFields}
-          onEdit={this.handleContactsEdit}
-          onSubmit={this.handleContactsSubmit}
-          saveShippingLocation={this.handleLocationSave}
-          saveShippingMethod={this.handleShippingMethodSave}
-          savePaymentMethod={this.handlePaymentMethodSave}
+          onEdit={handleContactsEdit}
+          onSubmit={handleContactsSubmit}
+          saveShippingLocation={handleLocationSave}
+          saveShippingMethod={handleShippingMethodSave}
+          savePaymentMethod={handlePaymentMethodSave}
           cartlayerBtnInitialized={cartlayerBtnInitialized}
         />
 
@@ -206,9 +204,9 @@ const CheckoutForm = props => {
           paymentMethod={paymentMethod}
           checkoutFields={checkoutFields}
           showPaymentForm={showPaymentForm}
-          onSave={this.handleShippingSave}
-          onEdit={this.handleShippingEdit}
-          onSubmit={this.handleShippingSubmit}
+          onSave={handleShippingSave}
+          onEdit={handleShippingEdit}
+          onSubmit={handleShippingSubmit}
         />
 
         {showPaymentForm && (
@@ -220,8 +218,8 @@ const CheckoutForm = props => {
             cart={cart}
             settings={settings}
             processingCheckout={processingCheckout}
-            handleSuccessPayment={this.handleSuccessPayment}
-            onCreateToken={this.handleCheckoutWithToken}
+            handleSuccessPayment={handleSuccessPayment}
+            onCreateToken={handleCheckoutWithToken}
           />
         )}
       </div>

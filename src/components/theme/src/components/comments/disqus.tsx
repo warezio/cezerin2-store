@@ -30,7 +30,7 @@ const Disqus = () => {
 	useEffect(() => {loadDisqus(),[])
 
 	componentDidUpdate() {
-		this.loadDisqus();
+		loadDisqus();
 	}
 
 	addDisqusScript() {
