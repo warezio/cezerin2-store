@@ -109,6 +109,13 @@
       "ua-parser-js": "^0.7.21",
       "winston": "^3.2.1",
       "node-sass": "^4.13.1"
+    },
+    "theme": {
+      "bulma": "^0.8.1",
+      "rc-slider": "^9.2.4",
+      "react-image-gallery": "^1.0.7",
+      "react-image-lightbox": "^5.1.1",
+      "react-lazyload": "^2.6.7"
     }
   }
 }

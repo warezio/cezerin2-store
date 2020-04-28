@@ -4,7 +4,7 @@
   "description": "Theme folder for cezerin2.",
   "main": "dist/index.js",
   "author": "Himadu Sirimanna",
-  "license": "MIT",
+  "license": "Unlicense",
   "dependencies": {
     "bulma": "^0.8.1",
     "rc-slider": "^9.2.4",
