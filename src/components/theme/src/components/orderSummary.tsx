@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { NavLink } from "react-router-dom"
+import { Link } from "gatsby"
 import { themeSettings, text } from "../lib/settings"
 import * as helper from "../lib/helper"
 
@@ -29,19 +29,19 @@ const SummaryItem = ({ settings, item, updateCartItemQuantiry }) => {
     <div className="columns is-mobile">
       <div className="column is-3">
         <div className="image">
-          <NavLink to={item.path}>
+          <Link to={item.path}>
             <img
               className="product-image"
               src={thumbnail}
               alt={item.name}
               title={item.name}
             />
-          </NavLink>
+          </Link>
         </div>
       </div>
       <div className="column">
         <>
-          <NavLink to={item.path}>{item.name}</NavLink>
+          <Link to={item.path}>{item.name}</Link>
         </>
         {item.variant_name.length > 0 && (
           <div className="cart-option-name">{item.variant_name}</div>

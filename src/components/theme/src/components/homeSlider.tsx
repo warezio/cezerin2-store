@@ -1,12 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { NavLink } from "react-router-dom"
+import { Link } from "gatsby"
 import ImageGallery from "react-image-gallery"
 import { themeSettings } from "../lib/settings"
 
 const renderItem = item => (
   <div className="image-gallery-image">
-    <NavLink to={item.path || ""}>
+    <Link to={item.path || ""}>
       <img src={item.original} alt={item.title} />
       <div
         className="caption"
@@ -15,7 +15,7 @@ const renderItem = item => (
         <div className="caption-title">{item.title}</div>
         <div className="caption-description">{item.description}</div>
       </div>
-    </NavLink>
+    </Link>
   </div>
 )
 
