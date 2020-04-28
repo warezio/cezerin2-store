@@ -16,15 +16,13 @@ import PageList from './list';
 			sort
 		};
 
-		api.ajax.pages.list(filter).then(({ status, json }) => {
-			this.setState({
-				pages: json
-			});
+		api.ajax.pages.list(filter).then(({  json }) => {
+			setPages(json)
 		});
 	};
 
 		const { pages } = this.state;
 		return <PageList pages={pages} />;
 	}
-}
+
 export default CustomPageList

@@ -13,7 +13,7 @@ const AttributeValue = () => {
 		}
 	}
 
-	onChange = event => {
+	const onChange = event => {
 		const {
 			attributeName,
 			valueName,

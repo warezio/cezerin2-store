@@ -21,7 +21,7 @@ const PriceSlider= () => {
 		}
 	}
 
-	setValues = values => {
+	const setValues = values => {
 		if (Array.isArray(values) && values.length === 2) {
 			this.setState({
 				minValue: values[0],

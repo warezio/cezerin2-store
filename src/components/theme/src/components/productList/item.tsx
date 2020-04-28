@@ -1,13 +1,13 @@
 import React from "react"
-import { NavLink } from "react-router-dom"
-import { themeSettings, text } from "../../lib/settings"
+import { Link } from "gatsby"
+import { themeSettings } from "../../lib/settings"
 import ItemTags from "./itemTags"
 import ItemImage from "./itemImage"
 import ItemPrice from "./itemPrice"
 
 const Item = ({
   product,
-  addCartItem,
+
   settings,
   columnCountOnMobile = 2,
   columnCountOnTablet = 3,
@@ -38,7 +38,7 @@ const Item = ({
     <div
       className={`column is-${columnSizeOnMobile}-mobile is-${columnSizeOnTablet}-tablet is-${columnSizeOnDesktop}-desktop is-${columnSizeOnWidescreen}-widescreen is-${columnSizeOnFullhd}-fullhd ${product.stock_status}`}
     >
-      <NavLink to={product.path}>
+      <Link to={product.path}>
         <figure className="image" style={{ height: imageHeight }}>
           <ItemTags tags={product.tags} />
           <ItemImage
@@ -51,7 +51,7 @@ const Item = ({
           <div className="product-name">{product.name}</div>
           <ItemPrice product={product} settings={settings} />
         </div>
-      </NavLink>
+      </Link>
     </div>
   )
 }
