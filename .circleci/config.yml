@@ -15,6 +15,10 @@ jobs:
           name: Install Dependencies
           command: npm i
 
+      - run:
+          name: Install Prettier
+          command: npm i -g prettier
+
       - save_cache:
           paths:
             - node_modules
