@@ -1,8 +1,3 @@
-export let themeSettings = null
-export let text = null
-export let language = null
-export let api = null
-
 const setVariables = options => {
   if (options.themeSettings) {
     ;({ themeSettings } = options)
@@ -21,10 +16,17 @@ const setVariables = options => {
   }
 }
 
-export const initOnClient = options => {
+const initOnClient = options => {
   setVariables(options)
 }
 
-export const initOnServer = options => {
+const initOnServer = options => {
   setVariables(options)
 }
+let themeSettings = null
+let text = null
+let language = null
+let api = null
+
+export { themeSettings, text, language, initOnClient, initOnServer }
+export default api

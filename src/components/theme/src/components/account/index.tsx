@@ -4,16 +4,16 @@ import Lscache from "lscache"
 import { themeSettings, text } from "../../lib/settings"
 import Account from "./account"
 
-const AccountForm = () => {
-  handlecustomerProperties = () => {
-    this.props.customerData({
+const AccountForm = props => {
+  const handlecustomerProperties = () => {
+    props.customerData({
       token: Lscache.get("auth_data"),
     })
   }
 
-  handleFormSubmit = values => {
+  const handleFormSubmit = values => {
     const { shipping_address, billing_address } = values
-    this.props.changecustomerProperties({
+    props.changecustomerProperties({
       first_name: values.first_name,
       last_name: values.last_name,
       email: values.email,
@@ -21,10 +21,10 @@ const AccountForm = () => {
       token: Lscache.get("auth_data"),
       shipping_address,
       billing_address,
-      history: this.props.history,
+      history: props.history,
     })
 
-    this.props.updateCart({
+    props.updateCart({
       shipping_address,
       billing_address,
       payment_method_id: null,
@@ -37,7 +37,7 @@ const AccountForm = () => {
     customerProperties,
     initialValues,
     cartlayerBtnInitialized,
-  } = this.props.state
+  } = props.state
 
   Lscache.flushExpired()
 
@@ -77,10 +77,10 @@ const AccountForm = () => {
       buttonClassName={checkoutButtonClass}
       editButtonClassName={checkoutEditButtonClass}
       settings={settings}
-      customerProperties={customerProperties || this.handlecustomerProperties()}
+      customerProperties={customerProperties || handlecustomerProperties()}
       initialValues={initialValues}
       cartlayerBtnInitialized={cartlayerBtnInitialized}
-      onSubmit={this.handleFormSubmit}
+      onSubmit={handleFormSubmit}
     />
   )
 }
