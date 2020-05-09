@@ -1,6 +1,6 @@
 Do anything you like and pull request or notify me, the Author Himadu Sirimanna. Please remember to follow community guidelines.
 
-Remember to follow UNLiCENSE
+Remember to follow Unlicense
 
 I/We dedicate any and all copyright interest in this software to the
 public domain. I make this dedication for the benefit of the public at
